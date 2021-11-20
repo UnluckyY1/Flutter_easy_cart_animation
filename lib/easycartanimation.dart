@@ -4,8 +4,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class EasyCartAnimation extends StatefulWidget {
-  final Offset startPosition;
-  final Offset endPosition;
+  final Offset? startPosition;
+  final Offset? endPosition;
   final Color color;
   final double opacity;
   final double height;
@@ -14,9 +14,9 @@ class EasyCartAnimation extends StatefulWidget {
   final double dyCurveAnimation;
 
   const EasyCartAnimation({
-    Key key,
-    @required this.startPosition,
-    @required this.endPosition,
+    Key? key,
+    required this.startPosition,
+    required this.endPosition,
     this.color = Colors.red,
     this.height = 14,
     this.width = 14,
@@ -31,10 +31,10 @@ class EasyCartAnimation extends StatefulWidget {
 
 class _CartAnimationPageState extends State<EasyCartAnimation>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller; // Animation controller
-  Animation<double> _animation; // animation
-  double left; // The left of the small dot (dynamic calculation)
-  double top; // Small far point right (dynamic calculation)
+  late AnimationController _controller; // Animation controller
+  late Animation<double> _animation; // animation
+  double? left; // The left of the small dot (dynamic calculation)
+  double? top; // Small far point right (dynamic calculation)
 
   @override
   void initState() {
@@ -43,14 +43,14 @@ class _CartAnimationPageState extends State<EasyCartAnimation>
         AnimationController(duration: Duration(milliseconds: 800), vsync: this);
     _animation = Tween(begin: 0.0, end: 1.0).animate(_controller);
 
-    var x0 = widget.startPosition.dx;
-    var y0 = widget.startPosition.dy;
+    var x0 = widget.startPosition!.dx;
+    var y0 = widget.startPosition!.dy;
 
-    var x1 = widget.startPosition.dx - widget.dxCurveAnimation;
-    var y1 = widget.startPosition.dy - widget.dyCurveAnimation;
+    var x1 = widget.startPosition!.dx - widget.dxCurveAnimation;
+    var y1 = widget.startPosition!.dy - widget.dyCurveAnimation;
 
-    var x2 = widget.endPosition.dx;
-    var y2 = widget.endPosition.dy;
+    var x2 = widget.endPosition!.dx;
+    var y2 = widget.endPosition!.dy;
 
     _animation.addListener(() {
 // Value for second-order Bezier curve
@@ -63,8 +63,8 @@ class _CartAnimationPageState extends State<EasyCartAnimation>
     });
 
     // Initialize the position of the widget
-    left = widget.startPosition.dx;
-    top = widget.startPosition.dy;
+    left = widget.startPosition!.dx;
+    top = widget.startPosition!.dy;
 
     // The animation starts when the widget is displayed
     _controller.forward();

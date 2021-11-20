@@ -7,10 +7,11 @@ Easy Cart Animation provides you an easy animated widget when adds a product to 
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+
 
 ```bash
-pip install foobar
+dependencies:
+  easycartanimation: ^1.0.0
 ```
 
 ## Usage

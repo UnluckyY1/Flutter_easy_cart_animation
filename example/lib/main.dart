@@ -1,22 +1,24 @@
 import 'package:easycartanimation/easycartanimation.dart';
-import 'package:flutter/material.dart';
 
+import 'package:flutter/material.dart';
 
 class EasyCartAnimationExamplePage extends StatefulWidget {
   @override
-  _EasyCartAnimationExamplePageState createState() => _EasyCartAnimationExamplePageState();
+  _EasyCartAnimationExamplePageState createState() =>
+      _EasyCartAnimationExamplePageState();
 }
 
-class _EasyCartAnimationExamplePageState extends State<EasyCartAnimationExamplePage> {
+class _EasyCartAnimationExamplePageState
+    extends State<EasyCartAnimationExamplePage> {
   GlobalKey _key = GlobalKey();
-  Offset _endOffset;
+  Offset? _endOffset;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((c) {
+    WidgetsBinding.instance!.addPostFrameCallback((c) {
       // Get the location of the "shopping cart"
-      _endOffset = (_key.currentContext.findRenderObject() as RenderBox)
+      _endOffset = (_key.currentContext!.findRenderObject() as RenderBox)
           .localToGlobal(Offset.zero);
     });
   }
@@ -50,8 +52,10 @@ class _EasyCartAnimationExamplePageState extends State<EasyCartAnimationExampleP
                             icon: Icon(Icons.remove_circle_outline),
                             onPressed: () {
                               // Get the position of the current widget when clicked, and pass in overlayEntry
-                              var _overlayEntry = OverlayEntry(builder: (_) {
-                                RenderBox box = context.findRenderObject();
+                              OverlayEntry? _overlayEntry =
+                                  OverlayEntry(builder: (_) {
+                                RenderBox box =
+                                    context.findRenderObject() as RenderBox;
                                 var offset = box.localToGlobal(Offset.zero);
                                 return EasyCartAnimation(
                                   startPosition: _endOffset,
@@ -65,10 +69,10 @@ class _EasyCartAnimationExamplePageState extends State<EasyCartAnimationExampleP
                                 );
                               });
                               // Show Overlay
-                              Overlay.of(context).insert(_overlayEntry);
+                              Overlay.of(context)!.insert(_overlayEntry);
                               // wait for the animation to end
                               Future.delayed(Duration(milliseconds: 800), () {
-                                _overlayEntry.remove();
+                                _overlayEntry!.remove();
                                 _overlayEntry = null;
                               });
                             },
@@ -84,8 +88,10 @@ class _EasyCartAnimationExamplePageState extends State<EasyCartAnimationExampleP
                             icon: Icon(Icons.add_circle_outline),
                             onPressed: () {
                               // Get the position of the current widget when clicked, and pass in overlayEntry
-                              var _overlayEntry = OverlayEntry(builder: (_) {
-                                RenderBox box = context.findRenderObject();
+                              OverlayEntry? _overlayEntry =
+                                  OverlayEntry(builder: (_) {
+                                RenderBox box =
+                                    context.findRenderObject() as RenderBox;
                                 var offset = box.localToGlobal(Offset.zero);
                                 return EasyCartAnimation(
                                   startPosition: offset,
@@ -99,10 +105,10 @@ class _EasyCartAnimationExamplePageState extends State<EasyCartAnimationExampleP
                                 );
                               });
                               // Show Overlay
-                              Overlay.of(context).insert(_overlayEntry);
+                              Overlay.of(context)!.insert(_overlayEntry);
                               // wait for the animation to end
                               Future.delayed(Duration(milliseconds: 800), () {
-                                _overlayEntry.remove();
+                                _overlayEntry!.remove();
                                 _overlayEntry = null;
                               });
                             },
