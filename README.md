@@ -9,9 +9,9 @@ Easy Cart Animation provides you an easy animated widget when adds a product to 
 
 
 
-```bash
+```yaml
 dependencies:
-  easycartanimation: ^1.0.0
+  easycartanimation: <Last-version>
 ```
 
 ## Usage
@@ -202,7 +202,7 @@ class _EasyCartAnimationExamplePageState extends State<EasyCartAnimationExampleP
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
+
 
 
 
