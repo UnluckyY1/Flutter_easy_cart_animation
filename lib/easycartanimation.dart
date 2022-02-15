@@ -12,11 +12,13 @@ class EasyCartAnimation extends StatefulWidget {
   final double width;
   final double dxCurveAnimation;
   final double dyCurveAnimation;
+  final Widget child; 
 
   const EasyCartAnimation({
     Key? key,
     required this.startPosition,
     required this.endPosition,
+    this.child,
     this.color = Colors.red,
     this.height = 14,
     this.width = 14,
@@ -90,7 +92,9 @@ class _CartAnimationPageState extends State<EasyCartAnimation>
                 child: Container(
                     width: widget.height,
                     height: widget.width,
-                    color: widget.color),
+                    color: widget.color,
+                    child:widget.child??SizedBox.shrink(),
+                ),
               ),
             ))
       ],
