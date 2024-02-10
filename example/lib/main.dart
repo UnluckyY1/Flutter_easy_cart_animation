@@ -2,21 +2,39 @@ import 'package:easycartanimation/easycartanimation.dart';
 
 import 'package:flutter/material.dart';
 
-class EasyCartAnimationExamplePage extends StatefulWidget {
+void main() {
+  runApp(const MyExample());
+}
+
+class MyExample extends StatelessWidget {
+  const MyExample({super.key});
+
   @override
-  _EasyCartAnimationExamplePageState createState() =>
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: EasyCartAnimationExamplePage(),
+    );
+  }
+}
+
+
+class EasyCartAnimationExamplePage extends StatefulWidget {
+  const EasyCartAnimationExamplePage({super.key});
+
+  @override
+  State<EasyCartAnimationExamplePage> createState() =>
       _EasyCartAnimationExamplePageState();
 }
 
 class _EasyCartAnimationExamplePageState
     extends State<EasyCartAnimationExamplePage> {
-  GlobalKey _key = GlobalKey();
+  final GlobalKey _key = GlobalKey();
   Offset? _endOffset;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((c) {
+    WidgetsBinding.instance.addPostFrameCallback((c) {
       // Get the location of the "shopping cart"
       _endOffset = (_key.currentContext!.findRenderObject() as RenderBox)
           .localToGlobal(Offset.zero);
@@ -28,7 +46,7 @@ class _EasyCartAnimationExamplePageState
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Easy cart Animation'),
+        title: const Text('Easy cart Animation'),
       ),
       body: Column(
         children: <Widget>[
@@ -36,23 +54,23 @@ class _EasyCartAnimationExamplePageState
             child: ListView.builder(
               itemBuilder: (BuildContext context, int index) {
                 return Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   height: 50,
                   child: Row(
                     children: <Widget>[
                       Expanded(
                         child: Text(
                           'Easy Cart Animation $index',
-                          style: TextStyle(fontSize: 16),
+                          style: const TextStyle(fontSize: 16),
                         ),
                       ),
                       Builder(
                         builder: (context) {
                           return IconButton(
-                            icon: Icon(Icons.remove_circle_outline),
+                            icon: const Icon(Icons.remove_circle_outline),
                             onPressed: () {
                               // Get the position of the current widget when clicked, and pass in overlayEntry
-                              OverlayEntry? _overlayEntry =
+                              OverlayEntry? overlayEntry0 =
                                   OverlayEntry(builder: (_) {
                                 RenderBox box =
                                     context.findRenderObject() as RenderBox;
@@ -69,26 +87,27 @@ class _EasyCartAnimationExamplePageState
                                 );
                               });
                               // Show Overlay
-                              Overlay.of(context)!.insert(_overlayEntry);
+                              Overlay.of(context).insert(overlayEntry0);
                               // wait for the animation to end
-                              Future.delayed(Duration(milliseconds: 800), () {
-                                _overlayEntry!.remove();
-                                _overlayEntry = null;
+                              Future.delayed(const Duration(milliseconds: 800),
+                                  () {
+                                overlayEntry0!.remove();
+                                overlayEntry0 = null;
                               });
                             },
                           );
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Builder(
                         builder: (context) {
                           return IconButton(
-                            icon: Icon(Icons.add_circle_outline),
+                            icon: const Icon(Icons.add_circle_outline),
                             onPressed: () {
                               // Get the position of the current widget when clicked, and pass in overlayEntry
-                              OverlayEntry? _overlayEntry =
+                              OverlayEntry? overlayEntry =
                                   OverlayEntry(builder: (_) {
                                 RenderBox box =
                                     context.findRenderObject() as RenderBox;
@@ -105,11 +124,12 @@ class _EasyCartAnimationExamplePageState
                                 );
                               });
                               // Show Overlay
-                              Overlay.of(context)!.insert(_overlayEntry);
+                              Overlay.of(context).insert(overlayEntry);
                               // wait for the animation to end
-                              Future.delayed(Duration(milliseconds: 800), () {
-                                _overlayEntry!.remove();
-                                _overlayEntry = null;
+                              Future.delayed(const Duration(milliseconds: 800),
+                                  () {
+                                overlayEntry!.remove();
+                                overlayEntry = null;
                               });
                             },
                           );
@@ -132,7 +152,7 @@ class _EasyCartAnimationExamplePageState
             child: Row(
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(left: 20),
+                  padding: const EdgeInsets.only(left: 20),
                   child: Icon(
                     Icons.shop_two,
                     key: _key,

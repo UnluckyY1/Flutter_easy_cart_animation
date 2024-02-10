@@ -1,11 +1,10 @@
 name: easycartanimation
 description: A new Flutter package that provides you an easy animated widget when adds a product to your cart.
 version:  1.0.0+1
-author: benmassaoudyassin@gmail.com
 homepage: https://github.com/UnluckyY1/Flutter_easy_cart_animation
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.12.0 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
