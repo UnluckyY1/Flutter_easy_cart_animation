@@ -12,7 +12,7 @@ class EasyCartAnimation extends StatefulWidget {
   final double width;
   final double dxCurveAnimation;
   final double dyCurveAnimation;
-  final Widget child; 
+  final Widget? child;
 
   const EasyCartAnimation({
     Key? key,
@@ -90,10 +90,10 @@ class _CartAnimationPageState extends State<EasyCartAnimation>
               opacity: widget.opacity,
               child: ClipOval(
                 child: Container(
-                    width: widget.height,
-                    height: widget.width,
-                    color: widget.color,
-                    child:widget.child??SizedBox.shrink(),
+                  width: widget.height,
+                  height: widget.width,
+                  color: widget.color,
+                  child: widget.child ?? SizedBox.shrink(),
                 ),
               ),
             ))
